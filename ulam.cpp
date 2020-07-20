@@ -2,8 +2,6 @@
 #include <iomanip>
 #include <vector>
 
-std::vector<std::vector<int>> vec;
-
 bool is_prime(int n)
 {
     if (n < 4)
@@ -18,7 +16,7 @@ bool is_prime(int n)
 
     return true;
 }
-void print_result()
+void print_result(const std::vector<std::vector<int>> &vec)
 {
     for (int i = 0; i < vec.size(); i++)
     {
@@ -33,7 +31,7 @@ void print_result()
         std::cout << "\n";
     }
 }
-std::vector<std::vector<int>> make_spiral(int num_rows)
+std::vector<std::vector<int>> make_spiral(std::vector < std::vector<int>> & vec, int num_rows)
 {
     int first = num_rows * num_rows;
     for (int iterator = 0; iterator < num_rows / 2; iterator++)
@@ -58,16 +56,22 @@ std::vector<std::vector<int>> make_spiral(int num_rows)
     return vec;
 }
 
-void init_vector(int num_rows)
+std::vector<std::vector<int>> init_vector(int num_rows)
 {
+    std::vector < std::vector<int>> vec;
     std::vector<int> row(num_rows, 0);
     for (int it = 0; it < num_rows; it++)
         vec.push_back(row);
+    return vec;
 }
 
 int main()
 {
-    init_vector(205);
-    make_spiral(205);
-    print_result();
+    int row_num = 0;
+    std::cout << "Enter the dimensions of the spiral: ";
+    std::cin >> row_num;
+    std::vector<std::vector<int>> vec = init_vector(row_num);
+
+    make_spiral(vec, row_num);
+    print_result(vec);
 }
