@@ -1,5 +1,5 @@
 # ulam_spiral
-simple ulam spiral implementation in c++
+ulam spiral implementation using vectors in c++
 
 
 
